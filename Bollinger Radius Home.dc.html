@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<script src="./image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0A0F1A;color:#ECE8DF;font-family:'IBM Plex Sans','IBM Plex Sans Arabic',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{color:#C9A86A}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:10;background:rgba(10,15,26,0.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(236,232,223,0.08)">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#" style="display:flex;align-items:center;gap:12px">
+      <span style="width:28px;height:28px;border-radius:50%;border:1.5px solid #C9A86A;display:grid;place-items:center"><span style="width:12px;height:12px;border-radius:50%;border:1.5px solid #ECE8DF"></span></span>
+      <span style="font-weight:500;font-size:16px;letter-spacing:-0.01em">Bollinger Radius</span>
+    </a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex;align-items:center;gap:clamp(16px,2.4vw,32px);font-size:14px;color:#A7A398">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#why">About</a>
+      <a href="#">Insights</a>
+      <a href="#" style="font-family:'IBM Plex Sans Arabic',sans-serif">العربية</a>
+      <a href="https://calendly.com/ritumbharabhatnagar/bollinger-consultaion-call" target="_blank" rel="noopener" style="color:#0A0F1A;background:#ECE8DF;padding:9px 16px;border-radius:999px;font-weight:500" style-hover="background:#C9A86A;color:#0A0F1A">Book a consultation</a>
+    </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpen }}" style="width:44px;height:44px;margin-right:-10px;background:none;border:0;color:#ECE8DF;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+      <span style="width:20px;height:1.5px;background:currentColor"></span>
+      <span style="width:20px;height:1.5px;background:currentColor"></span>
+    </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ showMenu }}" hint-placeholder-val="{{ false }}">
+  <nav style="display:flex;flex-direction:column;padding:8px 20px 24px;border-top:1px solid rgba(236,232,223,0.08);font-size:18px">
+    <a href="#services" onClick="{{ closeMenu }}" style="padding:14px 0;border-bottom:1px solid rgba(236,232,223,0.08)">Services</a>
+    <a href="#work" onClick="{{ closeMenu }}" style="padding:14px 0;border-bottom:1px solid rgba(236,232,223,0.08)">Work</a>
+    <a href="#why" onClick="{{ closeMenu }}" style="padding:14px 0;border-bottom:1px solid rgba(236,232,223,0.08)">About</a>
+    <a href="#" onClick="{{ closeMenu }}" style="padding:14px 0;border-bottom:1px solid rgba(236,232,223,0.08)">Insights</a>
+    <a href="#" onClick="{{ closeMenu }}" style="padding:14px 0;font-family:'IBM Plex Sans Arabic',sans-serif">العربية</a>
+    <a href="https://calendly.com/ritumbharabhatnagar/bollinger-consultaion-call" target="_blank" rel="noopener" onClick="{{ closeMenu }}" style="margin-top:12px;text-align:center;color:#0A0F1A;background:#C9A86A;padding:15px 24px;border-radius:999px;font-weight:500;font-size:16px">Book a consultation</a>
+  </nav>
+  </sc-if>
+</header>
+
+<section style="position:relative;overflow:hidden;border-bottom:1px solid rgba(236,232,223,0.08)">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,10vw,128px) clamp(20px,4vw,48px) 0">
+    <div style="display:flex;align-items:center;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#A7A398">
+      <span style="width:6px;height:6px;border-radius:50%;background:#C9A86A"></span>
+      <span>Technology consultancy · Dubai · Est. 2021</span>
+    </div>
+    <h1 style="margin:28px 0 0;font-weight:400;font-size:clamp(40px,6.4vw,88px);line-height:1.02;letter-spacing:-0.035em;max-width:14ch;text-wrap:balance">{{ headline }}</h1>
+    <p style="margin:28px 0 0;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#A7A398;max-width:56ch;text-wrap:pretty">Our engineers have shipped core platforms at PayPal, BlackRock, Flipkart, JP Morgan and WorkIndia. For five years we've brought that standard to banks, fintechs and governments across the GCC.</p>
+    <div style="margin-top:40px;display:flex;gap:12px;flex-wrap:wrap">
+      <a href="https://calendly.com/ritumbharabhatnagar/bollinger-consultaion-call" target="_blank" rel="noopener" style="background:#C9A86A;color:#0A0F1A;padding:15px 24px;border-radius:999px;font-weight:500;font-size:15px" style-hover="background:#ECE8DF;color:#0A0F1A">Book a consultation</a>
+      <a href="#work" style="border:1px solid rgba(236,232,223,0.24);padding:15px 24px;border-radius:999px;font-size:15px" style-hover="border-color:#C9A86A;color:#C9A86A">See selected work</a>
+    </div>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(20px,4vw,48px) 0;position:relative">
+    <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6F6C64;letter-spacing:0.06em;padding-bottom:10px">
+      <span>BR / 20, 2σ</span><span>2021 — 2026</span>
+    </div>
+    <svg viewBox="0 0 1200 260" preserveAspectRatio="none" style="display:block;width:100%;height:clamp(140px,20vw,260px)">
+      <path d="{{ bandArea }}" fill="rgba(201,168,106,0.08)"></path>
+      <path d="{{ upperPath }}" fill="none" stroke="#C9A86A" stroke-width="1" vector-effect="non-scaling-stroke" opacity="0.7"></path>
+      <path d="{{ lowerPath }}" fill="none" stroke="#C9A86A" stroke-width="1" vector-effect="non-scaling-stroke" opacity="0.7"></path>
+      <path d="{{ smaPath }}" fill="none" stroke="#6F6C64" stroke-width="1" stroke-dasharray="3 4" vector-effect="non-scaling-stroke"></path>
+      <path d="{{ pricePath }}" fill="none" stroke="#ECE8DF" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+    </svg>
+  </div>
+</section>
+
+<section style="border-bottom:1px solid rgba(236,232,223,0.08)">
+  <div style="max-width:1280px;margin:0 auto;padding:40px clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;gap:24px 64px;align-items:center">
+    <div style="flex:1 1 240px">
+      <div style="font-size:15px;font-weight:500">Where our team has built</div>
+      <div style="font-size:13px;color:#8A877E;margin-top:4px">Former employers of our team — not clients.</div>
+    </div>
+    <div style="flex:2 1 480px;display:flex;flex-wrap:wrap;gap:12px 40px;font-size:clamp(18px,1.8vw,22px);letter-spacing:-0.01em;color:#CFCBC1">
+      <span>PayPal</span><span>BlackRock</span><span>JP Morgan</span><span>Flipkart</span><span>WorkIndia</span>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background:#F3F0E8;color:#0A0F1A">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(72px,10vw,128px) clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:24px 64px;align-items:end">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5B5E66">
+          <span>01 — Capabilities</span>
+          <sc-if value="{{ showFlags }}" hint-placeholder-val="{{ false }}"><span style="background:#C9A86A;color:#0A0F1A;padding:2px 7px;border-radius:4px;letter-spacing:0.04em">Confirm list</span></sc-if>
+        </div>
+        <h2 style="margin:20px 0 0;font-weight:400;font-size:clamp(32px,4vw,52px);line-height:1.06;letter-spacing:-0.03em;text-wrap:balance">From architecture to production. One team, end to end.</h2>
+      </div>
+      <p style="margin:0;font-size:17px;line-height:1.6;color:#4A4D55;max-width:48ch;text-wrap:pretty">We don't hand over a strategy and leave. The people who design the system are the people who ship it, run it and scale it.</p>
+    </div>
+    <div style="margin-top:64px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));border-top:1px solid rgba(10,15,26,0.14);border-left:1px solid rgba(10,15,26,0.14)">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+        <a href="#" style="display:flex;flex-direction:column;gap:16px;padding:32px 28px 36px;border-right:1px solid rgba(10,15,26,0.14);border-bottom:1px solid rgba(10,15,26,0.14);min-height:240px;color:#0A0F1A;transition:background .2s" style-hover="background:#EAE5D9;color:#0A0F1A">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8C6F3A">{{ s.n }}</span>
+          <span style="font-size:22px;font-weight:500;letter-spacing:-0.015em;line-height:1.2">{{ s.title }}</span>
+          <span style="font-size:15px;line-height:1.55;color:#4A4D55;text-wrap:pretty">{{ s.body }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="work" style="border-bottom:1px solid rgba(236,232,223,0.08)">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(72px,10vw,128px) clamp(20px,4vw,48px)">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#A7A398">
+          <span>02 — Selected work</span>
+          <sc-if value="{{ showFlags }}" hint-placeholder-val="{{ false }}"><span style="background:#C9A86A;color:#0A0F1A;padding:2px 7px;border-radius:4px;letter-spacing:0.04em">Sample cases</span></sc-if>
+        </div>
+        <h2 style="margin:20px 0 0;font-weight:400;font-size:clamp(32px,4vw,52px);line-height:1.06;letter-spacing:-0.03em">Outcomes, measured.</h2>
+      </div>
+      <a href="#" style="font-size:15px;border-bottom:1px solid rgba(236,232,223,0.3);padding-bottom:4px">All case studies →</a>
+    </div>
+    <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px">
+      <sc-for list="{{ cases }}" as="c" hint-placeholder-count="3">
+        <a href="#" style="display:flex;flex-direction:column;background:#111827;border:1px solid rgba(236,232,223,0.08);border-radius:6px;overflow:hidden;color:#ECE8DF" style-hover="border-color:rgba(201,168,106,0.6);color:#ECE8DF">
+          <div style="aspect-ratio:16/10;background:#141C2C">
+            <image-slot id="case-visual-{{ $index }}" shape="rect" placeholder="Drop case study visual"></image-slot>
+          </div>
+          <div style="padding:28px;display:flex;flex-direction:column;gap:14px;flex:1">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A7A398;letter-spacing:0.04em">{{ c.client }}</span>
+            <span style="font-size:20px;line-height:1.3;letter-spacing:-0.01em;text-wrap:pretty">{{ c.title }}</span>
+            <div style="margin-top:auto;padding-top:20px;border-top:1px solid rgba(236,232,223,0.1);display:flex;align-items:baseline;gap:12px">
+              <span style="font-size:40px;font-weight:300;letter-spacing:-0.03em;color:#C9A86A">{{ c.metric }}</span>
+              <span style="font-size:14px;color:#A7A398;line-height:1.4">{{ c.metricLabel }}</span>
+            </div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="why" style="background:#F3F0E8;color:#0A0F1A">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(72px,10vw,128px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:64px;align-items:center">
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5B5E66">03 — Why Bollinger Radius</div>
+      <h2 style="margin:20px 0 0;font-weight:400;font-size:clamp(32px,4vw,52px);line-height:1.06;letter-spacing:-0.03em;text-wrap:balance">Dubai-rooted. Globally proven.</h2>
+      <div style="margin-top:48px;display:flex;flex-direction:column">
+        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3">
+          <div style="display:grid;grid-template-columns:72px 1fr;gap:16px;padding:24px 0;border-top:1px solid rgba(10,15,26,0.14)">
+            <span style="font-size:28px;font-weight:300;letter-spacing:-0.02em;color:#8C6F3A">{{ p.k }}</span>
+            <div>
+              <div style="font-size:18px;font-weight:500;letter-spacing:-0.01em">{{ p.title }}</div>
+              <div style="margin-top:6px;font-size:15px;line-height:1.55;color:#4A4D55;text-wrap:pretty">{{ p.body }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="position:relative">
+      <svg viewBox="0 0 520 520" style="display:block;width:100%;max-width:560px;margin:0 auto">
+        <sc-for list="{{ rings }}" as="r" hint-placeholder-count="4">
+          <circle cx="260" cy="260" r="{{ r.r }}" fill="none" stroke="rgba(10,15,26,0.18)" stroke-dasharray="{{ r.dash }}"></circle>
+          <text x="{{ r.lx }}" y="256" font-family="IBM Plex Mono, monospace" font-size="10" fill="#5B5E66">{{ r.label }}</text>
+        </sc-for>
+        <sc-for list="{{ cities }}" as="c" hint-placeholder-count="6">
+          <line x1="260" y1="260" x2="{{ c.x }}" y2="{{ c.y }}" stroke="rgba(140,111,58,0.35)"></line>
+          <circle cx="{{ c.x }}" cy="{{ c.y }}" r="3.5" fill="#0A0F1A"></circle>
+          <text x="{{ c.tx }}" y="{{ c.ty }}" text-anchor="{{ c.anchor }}" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="#0A0F1A">{{ c.name }}</text>
+        </sc-for>
+        <circle cx="260" cy="260" r="16" fill="rgba(201,168,106,0.25)"></circle>
+        <circle cx="260" cy="260" r="6" fill="#8C6F3A"></circle>
+        <text x="272" y="284" font-family="IBM Plex Sans, sans-serif" font-size="14" font-weight="600" fill="#0A0F1A">Dubai</text>
+      </svg>
+      <div style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#5B5E66;margin-top:8px">ONE OFFICE · SIX CAPITALS WITHIN 1,000 KM</div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#F3F0E8;color:#0A0F1A;border-top:1px solid rgba(10,15,26,0.1)">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,8vw,104px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px 64px">
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#5B5E66">04 — Industries</div>
+      <h2 style="margin:20px 0 0;font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-0.025em;max-width:16ch">Where the stakes are regulated, real-time and high-volume.</h2>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <sc-for list="{{ industries }}" as="i" hint-placeholder-count="6">
+        <a href="#" style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:18px 0;border-bottom:1px solid rgba(10,15,26,0.14);font-size:clamp(18px,1.8vw,22px);letter-spacing:-0.01em;color:#0A0F1A" style-hover="color:#8C6F3A">
+          <span>{{ i.name }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#5B5E66">{{ i.n }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="position:relative;overflow:hidden">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(80px,12vw,152px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:end">
+    <div>
+      <h2 style="margin:0;font-weight:400;font-size:clamp(40px,5.6vw,76px);line-height:1.02;letter-spacing:-0.035em;max-width:12ch">Tell us what you're building.</h2>
+      <p style="margin:24px 0 0;font-size:18px;line-height:1.55;color:#A7A398;max-width:46ch">A 30-minute call with a senior engineer — not a sales rep. We'll tell you honestly whether we're the right team.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <a href="https://calendly.com/ritumbharabhatnagar/bollinger-consultaion-call" target="_blank" rel="noopener" style="align-self:flex-start;background:#C9A86A;color:#0A0F1A;padding:17px 28px;border-radius:999px;font-weight:500;font-size:16px" style-hover="background:#ECE8DF;color:#0A0F1A">Book a consultation</a>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;padding-top:24px;border-top:1px solid rgba(236,232,223,0.12)">
+        <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#8A877E">EMAIL</div><div style="margin-top:6px;font-size:15px">hello@bollingerradius.com</div></div>
+        <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#8A877E">WHATSAPP</div><div style="margin-top:6px;font-size:15px">+971 [00 000 0000]</div></div>
+        <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#8A877E">OFFICE</div><div style="margin-top:6px;font-size:15px">[Address], Dubai, UAE</div></div>
+      </div>
+      <sc-if value="{{ showFlags }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;background:#C9A86A;color:#0A0F1A;padding:2px 7px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:12px">Confirm contact details</span></sc-if>
+    </div>
+  </div>
+</section>
+
+<footer style="border-top:1px solid rgba(236,232,223,0.08)">
+  <div style="max-width:1280px;margin:0 auto;padding:32px clamp(20px,4vw,48px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#8A877E">
+    <span>© 2026 Bollinger Radius. Dubai, United Arab Emirates.</span>
+    <div style="display:flex;gap:24px;flex-wrap:wrap"><a href="#">Careers</a><a href="#">Insights</a><a href="#">LinkedIn</a><a href="#">Privacy</a></div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;headline&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Global scale&quot;,&quot;Builders&quot;,&quot;Proven&quot;],&quot;default&quot;:&quot;Global scale&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showFlags&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.chart = this.buildChart();
+    this.geo = this.buildRadius();
+  }
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menuOpen: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth, menuOpen: window.innerWidth < 900 && this.state.menuOpen });
+    window.addEventListener('resize', this.onResize);
+    this.onResize();
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  buildChart() {
+    let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const N = 140, P = 20, px = [];
+    let v = 100;
+    for (let i = 0; i < N + P; i++) { v += (rnd() - 0.47) * 3.2 + Math.sin(i / 11) * 0.6; px.push(v); }
+    const pts = [];
+    for (let i = P; i < N + P; i++) {
+      const w = px.slice(i - P, i), m = w.reduce((a, b) => a + b) / P;
+      const sd = Math.sqrt(w.reduce((a, b) => a + (b - m) ** 2, 0) / P);
+      pts.push({ p: px[i], m, u: m + 2 * sd, l: m - 2 * sd });
+    }
+    const all = pts.flatMap(o => [o.u, o.l]), lo = Math.min(...all), hi = Math.max(...all);
+    const X = i => (i / (N - 1)) * 1200, Y = y => 250 - ((y - lo) / (hi - lo)) * 240;
+    const line = k => pts.map((o, i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(o[k]).toFixed(1)).join('');
+    const back = pts.map((o, i) => [X(i), Y(o.l)]).reverse().map(([x, y]) => 'L' + x.toFixed(1) + ' ' + y.toFixed(1)).join('');
+    return { pricePath: line('p'), smaPath: line('m'), upperPath: line('u'), lowerPath: line('l'), bandArea: line('u') + back + 'Z' };
+  }
+  buildRadius() {
+    const c = { lat: 25.2, lon: 55.27 }, k = 220 / 1000, cos = Math.cos(25.2 * Math.PI / 180);
+    const list = [['Abu Dhabi', 24.45, 54.38], ['Muscat', 23.59, 58.38], ['Doha', 25.29, 51.53], ['Manama', 26.23, 50.59], ['Riyadh', 24.71, 46.68], ['Kuwait City', 29.38, 47.98]];
+    const cities = list.map(([name, lat, lon]) => {
+      const dx = (lon - c.lon) * cos * 111, dy = (lat - c.lat) * 111;
+      const x = 260 + dx * k, y = 260 - dy * k, right = dx > 0;
+      const km = Math.round(Math.hypot(dx, dy) / 10) * 10;
+      return { name: name + ' · ' + km + ' km', x: +x.toFixed(1), y: +y.toFixed(1), tx: +(x + (right ? 8 : -8)).toFixed(1), ty: +(y + (name === 'Abu Dhabi' ? 16 : -8)).toFixed(1), anchor: right ? 'start' : 'end' };
+    });
+    const rings = [250, 500, 750, 1000].map(km => ({ r: km * k, dash: km === 1000 ? '0' : '2 4', label: km + ' km', lx: 260 + km * k + 4 }));
+    return { cities, rings };
+  }
+  renderVals() {
+    const heads = {
+      'Global scale': 'Systems built at global scale. Delivered from Dubai.',
+      'Builders': 'Built by builders, not slide decks.',
+      'Proven': 'The engineers behind PayPal and BlackRock, now in your region.'
+    };
+    return {
+      ...this.chart, ...this.geo,
+      isDesktop: this.state.w >= 900, isMobile: this.state.w < 900,
+      menuOpen: this.state.menuOpen, showMenu: this.state.w < 900 && this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      headline: heads[this.props.headline] || heads['Global scale'],
+      showFlags: this.props.showFlags ?? false,
+      services: [
+        { n: '01', title: 'Strategy & architecture', body: 'Technology roadmaps, target-state architecture and build-vs-buy decisions grounded in what actually ships.' },
+        { n: '02', title: 'Product engineering', body: 'Senior teams that design, build and launch customer-facing products — web, mobile and platform.' },
+        { n: '03', title: 'Payments & financial systems', body: 'Core banking integrations, payment rails, ledgers and reconciliation built for regulators and real volume.' },
+        { n: '04', title: 'Data & AI', body: 'Data platforms, analytics and applied AI that move from pilot to production with clear controls.' },
+        { n: '05', title: 'Cloud & platform', body: 'Cloud migration, platform engineering and reliability practices for systems that cannot go down.' },
+        { n: '06', title: 'Technical leadership', body: 'Fractional CTO, technical due diligence and team building for founders, boards and investors.' }
+      ],
+      cases: [
+        { client: 'REGIONAL BANK · UAE', title: 'Rebuilt a legacy payments switch for instant domestic transfers.', metric: '4×', metricLabel: 'transaction throughput' },
+        { client: 'FINTECH · KSA', title: 'Took a lending platform from prototype to SAMA-compliant launch.', metric: '7 mo', metricLabel: 'idea to licensed production' },
+        { client: 'SEMI-GOVERNMENT · DUBAI', title: 'Unified citizen data across agencies on a single cloud platform.', metric: '62%', metricLabel: 'reduction in processing time' }
+      ],
+      pillars: [
+        { k: '5 yrs', title: 'Delivering in-region', body: 'Five years of shipping for clients across the UAE and GCC. We know the regulators, the procurement and the pace.' },
+        { k: 'Tier 1', title: 'Pedigree you can verify', body: 'Our leads built payments, trading and marketplace systems at some of the most demanding companies in the world.' },
+        { k: 'Ship', title: 'Builders, not advisors', body: 'Every engagement ends in working software in production, not a deck.' }
+      ],
+      industries: [
+        { name: 'Banking', n: '01' }, { name: 'Fintech & payments', n: '02' }, { name: 'Capital markets', n: '03' },
+        { name: 'Government & semi-government', n: '04' }, { name: 'Consumer & marketplaces', n: '05' }, { name: 'Market entry into the GCC', n: '06' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
