@@ -132,9 +132,6 @@ a:hover{color:#C9A86A}
     <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px">
       <sc-for list="{{ cases }}" as="c" hint-placeholder-count="3">
         <a href="#" style="display:flex;flex-direction:column;background:#111827;border:1px solid rgba(236,232,223,0.08);border-radius:6px;overflow:hidden;color:#ECE8DF" style-hover="border-color:rgba(201,168,106,0.6);color:#ECE8DF">
-          <div style="aspect-ratio:16/10;background:#141C2C">
-            <image-slot id="case-visual-{{ $index }}" shape="rect" placeholder="Drop case study visual"></image-slot>
-          </div>
           <div style="padding:28px;display:flex;flex-direction:column;gap:14px;flex:1">
             <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A7A398;letter-spacing:0.04em">{{ c.client }}</span>
             <span style="font-size:20px;line-height:1.3;letter-spacing:-0.01em;text-wrap:pretty">{{ c.title }}</span>
@@ -211,12 +208,6 @@ a:hover{color:#C9A86A}
     </div>
     <div style="display:flex;flex-direction:column;gap:24px">
       <a href="https://calendly.com/ritumbharabhatnagar/bollinger-consultaion-call" target="_blank" rel="noopener" style="align-self:flex-start;background:#C9A86A;color:#0A0F1A;padding:17px 28px;border-radius:999px;font-weight:500;font-size:16px" style-hover="background:#ECE8DF;color:#0A0F1A">Book a consultation</a>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;padding-top:24px;border-top:1px solid rgba(236,232,223,0.12)">
-        <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#8A877E">EMAIL</div><div style="margin-top:6px;font-size:15px">hello@bollingerradius.com</div></div>
-        <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#8A877E">WHATSAPP</div><div style="margin-top:6px;font-size:15px">+971 [00 000 0000]</div></div>
-        <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#8A877E">OFFICE</div><div style="margin-top:6px;font-size:15px">[Address], Dubai, UAE</div></div>
-      </div>
-      <sc-if value="{{ showFlags }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;background:#C9A86A;color:#0A0F1A;padding:2px 7px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:12px">Confirm contact details</span></sc-if>
     </div>
   </div>
 </section>
@@ -224,7 +215,7 @@ a:hover{color:#C9A86A}
 <footer style="border-top:1px solid rgba(236,232,223,0.08)">
   <div style="max-width:1280px;margin:0 auto;padding:32px clamp(20px,4vw,48px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:#8A877E">
     <span>© 2026 Bollinger Radius. Dubai, United Arab Emirates.</span>
-    <div style="display:flex;gap:24px;flex-wrap:wrap"><a href="#">Careers</a><a href="#">Insights</a><a href="#">LinkedIn</a><a href="#">Privacy</a></div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap"><a href="#">Insights</a><a href="#">Privacy</a></div>
   </div>
 </footer>
 </x-dc>
